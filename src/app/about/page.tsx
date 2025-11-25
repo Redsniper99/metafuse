@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Users, Target, Award, Heart } from 'lucide-react'
+import ChromaGrid, { ChromaItem } from '@/components/ChromaGrid'
 
 export default function AboutPage() {
     const values = [
@@ -30,6 +31,63 @@ export default function AboutPage() {
         { number: '30+', label: 'Happy Clients' },
         { number: '5+', label: 'Years Experience' },
         { number: '15+', label: 'Team Members' },
+    ]
+
+    const teamMembers: ChromaItem[] = [
+        {
+            image: 'https://i.pravatar.cc/300?img=12',
+            title: 'Sarah Mitchell',
+            subtitle: 'CEO & Founder',
+            handle: '@sarahmitchell',
+            borderColor: '#2f70c5',
+            gradient: 'linear-gradient(145deg, #2f70c5, #000)',
+            url: 'https://linkedin.com/'
+        },
+        {
+            image: 'https://i.pravatar.cc/300?img=33',
+            title: 'David Chen',
+            subtitle: 'Lead Developer',
+            handle: '@davidchen',
+            borderColor: '#4a8de8',
+            gradient: 'linear-gradient(180deg, #4a8de8, #000)',
+            url: 'https://github.com/'
+        },
+        {
+            image: 'https://i.pravatar.cc/300?img=47',
+            title: 'Emily Rodriguez',
+            subtitle: 'UI/UX Director',
+            handle: '@emilyrod',
+            borderColor: '#5ba3ff',
+            gradient: 'linear-gradient(210deg, #5ba3ff, #000)',
+            url: 'https://dribbble.com/'
+        },
+        {
+            image: 'https://i.pravatar.cc/300?img=68',
+            title: 'Marcus Johnson',
+            subtitle: 'CTO',
+            handle: '@marcusj',
+            borderColor: '#2f70c5',
+            gradient: 'linear-gradient(165deg, #2f70c5, #000)',
+            url: 'https://github.com/'
+        },
+        {
+            image: 'https://i.pravatar.cc/300?img=20',
+            title: 'Aisha Patel',
+            subtitle: 'Product Manager',
+            handle: '@aishapatel',
+            borderColor: '#4a8de8',
+            gradient: 'linear-gradient(225deg, #4a8de8, #000)',
+            url: 'https://linkedin.com/'
+        },
+        {
+            image: 'https://i.pravatar.cc/300?img=59',
+            title: 'Alex Kim',
+            subtitle: 'DevOps Lead',
+            handle: '@alexkim',
+            borderColor: '#5ba3ff',
+            gradient: 'linear-gradient(135deg, #5ba3ff, #000)',
+            url: 'https://github.com/'
+        }
     ]
 
     return (
@@ -92,6 +150,30 @@ export default function AboutPage() {
                                 <p className="text-foreground/70">{value.description}</p>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Team Section */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
+                            Meet Our Team
+                        </h2>
+                        <p className="text-lg text-foreground/70">
+                            Talented individuals driving innovation and excellence
+                        </p>
+                    </div>
+
+                    <div style={{ minHeight: '800px', position: 'relative' }}>
+                        <ChromaGrid
+                            items={teamMembers}
+                            radius={300}
+                            damping={0.45}
+                            fadeOut={0.6}
+                            ease="power3.out"
+                        />
                     </div>
                 </div>
             </section>
