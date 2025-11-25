@@ -2,7 +2,6 @@
 
 import { Footer } from '@/components/Footer'
 import { AnimatedBackground } from '@/components/AnimatedBackground'
-import ElectricBorder from '@/components/ElectricBorder'
 import TextType from '@/components/TextType'
 import { ArrowRight, Code, Palette, Zap, Rocket } from 'lucide-react'
 import Link from 'next/link'
@@ -172,30 +171,48 @@ export default function Home() {
 
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="group relative h-full"
+                  whileHover={{
+                    scale: 1.05,
+                    y: -5,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative p-6 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden cursor-pointer"
                 >
-                  <ElectricBorder
-                    color="#2f70c5"
-                    speed={1}
-                    chaos={0.5}
-                    thickness={2}
-                    style={{ borderRadius: 16, height: '100%' }}
-                  >
-                    <div className="p-6 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300 h-full">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <feature.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                      <p className="text-foreground/70 text-sm">{feature.description}</p>
+                  {/* Gradient Border Effect */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2f70c5]/30 via-[#4a8de8]/20 to-[#5ba3ff]/30 blur-xl" />
+                  </div>
+
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-br from-[#2f70c5] to-[#4a8de8] rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300" />
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#2f70c5] to-[#4a8de8] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="w-7 h-7 text-white" />
                     </div>
-                  </ElectricBorder>
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-[#4a8de8] transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-foreground/70 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  {/* Animated Corner Accent */}
+                  <motion.div
+                    className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#2f70c5]/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100"
+                    initial={{ scale: 0, rotate: -45 }}
+                    whileHover={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </motion.div>
               ))}
             </motion.div>
