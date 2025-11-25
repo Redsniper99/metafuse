@@ -286,13 +286,13 @@ export default function Home() {
     <div ref={containerRef} className="relative">
       <AnimatedBackground />
 
-      <main className="relative scroll-smooth snap-y snap-proximity h-screen overflow-y-scroll">
+      <main className="relative scroll-smooth md:snap-y md:snap-proximity h-screen overflow-y-scroll">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="min-h-screen snap-start flex items-center justify-center px-4 sm:px-6 lg:px-8 relative"
+          className="min-h-screen md:snap-start flex items-center justify-center px-4 sm:px-6 lg:px-8 relative"
         >
           <div className="relative max-w-5xl mx-auto text-center z-10">
             {/* Logo */}

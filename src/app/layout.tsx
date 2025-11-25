@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { AnimationModeProvider } from "@/contexts/AnimationModeContext";
 import Preloader from "@/components/Preloader";
+import Head from 'next/head';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        <Head>
+          <link rel="icon" href="/metafuse.svg" type="image/svg+xml" />
+        </Head>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <AnimationModeProvider>
             <Preloader />

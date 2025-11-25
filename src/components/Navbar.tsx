@@ -65,7 +65,7 @@ export function Navbar() {
                             href="/"
                             className="flex items-center gap-2 hover:scale-105 transition-transform duration-300"
                         >
-                            <img src="/metafuse.svg" alt="Metafuse" className="w-8 h-8" />
+                            <img src="/metafuse.svg" alt="Metafuse" className="w-8 h-8 filter-none" />
                             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
                                 metafuse
                             </span>
@@ -167,10 +167,13 @@ export function Navbar() {
 
                                 {/* Branding at bottom */}
                                 <div className="mt-auto pt-6 border-t border-white/10">
-                                    <p className="text-2xl font-bold bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
-                                        metafuse
-                                    </p>
-                                    <p className="text-sm text-foreground/50 mt-1">
+                                    <div className="flex items-center gap-2 justify-center mb-4">
+                                        <img src="/metafuse.svg" alt="Metafuse" className="w-8 h-8 filter-none" />
+                                        <span className="text-2xl font-bold bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
+                                            metafuse
+                                        </span>
+                                    </div>
+                                    <p className="text-sm text-foreground/50 mt-1 text-center">
                                         Digital Solutions
                                     </p>
                                 </div>
