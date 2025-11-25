@@ -143,14 +143,12 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 20%,
-    rgba(74, 141, 232, 0.15) 40%,
-    rgba(91, 163, 255, 0.2) 50%,
-    rgba(74, 141, 232, 0.15) 60%,
-    transparent 80%
-  );
+  background: linear-gradient(115deg,
+      transparent 20%,
+      rgba(74, 141, 232, 0.15) 40%,
+      rgba(91, 163, 255, 0.2) 50%,
+      rgba(74, 141, 232, 0.15) 60%,
+      transparent 80%);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
   pointer-events: none;
@@ -161,7 +159,7 @@ body {
   transform: translateX(100%);
 }
 
-.card-glare > * {
+.card-glare>* {
   position: relative;
   z-index: 2;
 }
