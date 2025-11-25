@@ -192,7 +192,7 @@ export default function Home() {
     <div ref={containerRef} className="relative">
       <AnimatedBackground />
 
-      <main className="relative scroll-smooth snap-y snap-mandatory h-screen overflow-y-scroll">
+      <main className="relative scroll-smooth snap-y snap-proximity h-screen overflow-y-scroll">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -235,7 +235,7 @@ export default function Home() {
             >
               <Link
                 href="/projects"
-                className="group px-8 py-4 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+                className="group px-8 py-4 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/20 rounded-full hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 View Our Work
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -282,7 +282,7 @@ export default function Home() {
                     transition: { duration: 0.2 }
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative p-6 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden cursor-pointer"
+                  className="group relative p-6 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden cursor-pointer"
                 >
                   {/* Gradient Border Effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -345,7 +345,7 @@ export default function Home() {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="group p-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                  className="group p-8 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#2f70c5] to-[#4a8de8] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <service.icon className="w-8 h-8 text-white" />
@@ -398,7 +398,7 @@ export default function Home() {
                       {step.number}
                     </div>
                   </div>
-                  <div className="flex-1 p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl group-hover:bg-white/10 transition-all duration-300">
+                  <div className="flex-1 p-6 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl group-hover:bg-gray-200/90 dark:group-hover:bg-white/10 transition-all duration-300">
                     <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
                     <p className="text-foreground/70">{step.description}</p>
                   </div>
@@ -435,7 +435,7 @@ export default function Home() {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ scale: 1.03 }}
-                  className="p-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                  className="p-8 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300"
                 >
                   <h3 className="text-2xl font-semibold mb-3 bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
                     {reason.title}
@@ -473,7 +473,7 @@ export default function Home() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="p-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
+                  className="p-8 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -518,7 +518,7 @@ export default function Home() {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, y: -10 }}
-                  className="group p-6 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300"
+                  className="group p-6 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="h-48 bg-gradient-to-br from-[#2f70c5]/20 to-[#4a8de8]/20 rounded-xl mb-4 flex items-center justify-center">
                     <Code className="w-16 h-16 text-foreground/30" />
@@ -578,7 +578,7 @@ export default function Home() {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ scale: 1.15, rotate: 5 }}
-                  className="group p-6 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center"
+                  className="group p-6 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center"
                 >
                   <div className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">
                     {tech.icon}
@@ -620,7 +620,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/projects"
-                className="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full font-semibold hover:bg-white/10 transition-all duration-300 hover:scale-105 inline-flex items-center justify-center"
+                className="px-8 py-4 bg-gray-100/90 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full font-semibold hover:bg-gray-200/90 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 inline-flex items-center justify-center"
               >
                 View Our Work
               </Link>
@@ -628,8 +628,10 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Footer */}
-        <Footer />
+        {/* Footer Section */}
+        <section className="snap-start">
+          <Footer />
+        </section>
       </main>
     </div>
   )
