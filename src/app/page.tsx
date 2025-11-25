@@ -286,7 +286,7 @@ export default function Home() {
     <div ref={containerRef} className="relative">
       <AnimatedBackground />
 
-      <main className="relative scroll-smooth md:snap-y md:snap-proximity h-screen overflow-y-scroll">
+      <main className="relative scroll-smooth md:snap-y md:snap-proximity overflow-y-auto">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
