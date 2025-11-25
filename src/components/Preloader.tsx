@@ -5,29 +5,90 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Preloader() {
     const [isLoading, setIsLoading] = useState(true)
+    const [loadingProgress, setLoadingProgress] = useState(0)
 
     useEffect(() => {
-        // Simulate loading time or wait for resources
-        // In a real scenario, you might wait for specific assets
-        // For now, we'll ensure a minimum display time for the brand
-        const timer = setTimeout(() => {
-            setIsLoading(false)
-        }, 3000)
+        let progressInterval: NodeJS.Timeout
 
-        const handleLoad = () => {
-            // If window load happens after timeout, we are good.
-            // If before, we still wait for timeout to finish for smooth UX.
+        // Track multiple loading states
+        const loadingStates = {
+            windowLoaded: false,
+            fontsLoaded: false,
+            imagesLoaded: false,
+            minTimeElapsed: false
+        }
+
+        const updateProgress = () => {
+            const completed = Object.values(loadingStates).filter(Boolean).length
+            const total = Object.keys(loadingStates).length
+            setLoadingProgress(Math.floor((completed / total) * 100))
+        }
+
+        const checkAllLoaded = () => {
+            if (Object.values(loadingStates).every(state => state === true)) {
+                // Small delay to ensure smooth transition
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 500)
+            }
+        }
+
+        // 1. Wait for window load
+        const handleWindowLoad = () => {
+            loadingStates.windowLoaded = true
+            updateProgress()
+            checkAllLoaded()
         }
 
         if (document.readyState === 'complete') {
-            handleLoad()
+            handleWindowLoad()
         } else {
-            window.addEventListener('load', handleLoad)
+            window.addEventListener('load', handleWindowLoad)
         }
 
+        // 2. Wait for fonts
+        if ('fonts' in document) {
+            document.fonts.ready.then(() => {
+                loadingStates.fontsLoaded = true
+                updateProgress()
+                checkAllLoaded()
+            })
+        } else {
+            loadingStates.fontsLoaded = true
+            updateProgress()
+        }
+
+        // 3. Wait for images
+        const images = Array.from(document.images)
+        if (images.length === 0) {
+            loadingStates.imagesLoaded = true
+            updateProgress()
+        } else {
+            Promise.all(
+                images.map(img => {
+                    if (img.complete) return Promise.resolve()
+                    return new Promise(resolve => {
+                        img.onload = resolve
+                        img.onerror = resolve
+                    })
+                })
+            ).then(() => {
+                loadingStates.imagesLoaded = true
+                updateProgress()
+                checkAllLoaded()
+            })
+        }
+
+        // 4. Minimum time (ensure animations complete)
+        const minTimer = setTimeout(() => {
+            loadingStates.minTimeElapsed = true
+            updateProgress()
+            checkAllLoaded()
+        }, 3000) // 3 seconds minimum to show brand animation
+
         return () => {
-            clearTimeout(timer)
-            window.removeEventListener('load', handleLoad)
+            window.removeEventListener('load', handleWindowLoad)
+            clearTimeout(minTimer)
         }
     }, [])
 
@@ -51,7 +112,7 @@ export default function Preloader() {
                                     transition={{
                                         duration: 1.5,
                                         times: [0, 0.4, 0.8, 1],
-                                        delay: index * 0.1, // Stagger effect
+                                        delay: index * 0.1,
                                         ease: "easeInOut"
                                     }}
                                     className="bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent"
@@ -65,7 +126,7 @@ export default function Preloader() {
                         <motion.div
                             initial={{ x: '-100%' }}
                             animate={{ x: '200%' }}
-                            transition={{ duration: 1, delay: 2.0, ease: 'easeInOut' }} // Increased delay to wait for staggered blink
+                            transition={{ duration: 1, delay: 2.0, ease: 'easeInOut' }}
                             className="absolute inset-0 z-20 pointer-events-none"
                             style={{
                                 background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
@@ -74,12 +135,25 @@ export default function Preloader() {
                             }}
                         />
 
-                        <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: "100%" }}
-                            transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-                            className="h-1 bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] mt-2 rounded-full relative z-10"
-                        />
+                        {/* Loading Bar */}
+                        <div className="mt-4 w-full max-w-xs mx-auto">
+                            <motion.div
+                                className="h-1 bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] rounded-full relative z-10"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${loadingProgress}%` }}
+                                transition={{ duration: 0.3, ease: "easeOut" }}
+                            />
+                        </div>
+
+                        {/* Loading Text */}
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1 }}
+                            className="text-center text-sm text-foreground/50 mt-4"
+                        >
+                            {loadingProgress < 100 ? 'Loading...' : 'Ready!'}
+                        </motion.p>
                     </div>
                 </motion.div>
             )}
