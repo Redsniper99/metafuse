@@ -74,19 +74,19 @@ export default function Home() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
+        staggerChildren: 0.08,
+        delayChildren: 0.1
       }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.22, 1, 0.36, 1] as const
       }
     }
@@ -156,9 +156,9 @@ export default function Home() {
         <motion.section
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px -300px 0px" }}
           variants={containerVariants}
-          className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative bg-background/90 backdrop-blur-md"
+          className="py-20 px-4 sm:px-6 lg:px-8 relative bg-background/90 backdrop-blur-md"
         >
           <div className="max-w-7xl mx-auto w-full">
             <motion.div variants={itemVariants} className="text-center mb-16">
@@ -202,13 +202,13 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Projects Section */}
+        {/* Featured Projects Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2, margin: "0px 0px -100px 0px" }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px -300px 0px" }}
           variants={containerVariants}
-          className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative"
+          className="py-20 px-4 sm:px-6 lg:px-8 relative"
         >
           <div className="max-w-7xl mx-auto w-full">
             <motion.div variants={itemVariants} className="text-center mb-16">
@@ -266,9 +266,9 @@ export default function Home() {
         <motion.section
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3, margin: "0px 0px -100px 0px" }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px -300px 0px" }}
           variants={containerVariants}
-          className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative bg-background/90 backdrop-blur-md"
+          className="py-20 px-4 sm:px-6 lg:px-8 relative bg-background/90 backdrop-blur-md"
         >
           <div className="max-w-7xl mx-auto w-full">
             <motion.div variants={itemVariants} className="text-center mb-16">
