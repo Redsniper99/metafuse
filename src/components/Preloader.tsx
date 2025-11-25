@@ -40,9 +40,9 @@ export default function Preloader() {
                     transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                     className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
                 >
-                    <div className="relative overflow-hidden p-8">
+                    <div className="relative overflow-hidden p-4 sm:p-6 md:p-8">
                         {/* Base Logo with Blink */}
-                        <h1 className="text-5xl md:text-7xl font-bold relative z-10 flex">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold relative z-10 flex justify-center">
                             {"metafuse".split("").map((char, index) => (
                                 <motion.span
                                     key={index}
