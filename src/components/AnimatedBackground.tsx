@@ -3,8 +3,14 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { useAnimationMode } from '@/contexts/AnimationModeContext'
 
 const PixelBlast = dynamic(() => import('./PixelBlast'), {
+    ssr: false,
+    loading: () => null
+})
+
+const FloatingLines = dynamic(() => import('./FloatingLines'), {
     ssr: false,
     loading: () => null
 })
@@ -12,6 +18,7 @@ const PixelBlast = dynamic(() => import('./PixelBlast'), {
 export function AnimatedBackground() {
     const [isMobile, setIsMobile] = useState(false)
     const { theme, systemTheme } = useTheme()
+    const { mode } = useAnimationMode()
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -34,6 +41,7 @@ export function AnimatedBackground() {
 
     // Use light blue for light mode, darker blue for dark mode
     const backgroundColor = isLightMode ? '#93c5fd' : '#2f70c5'
+    const plasmaColor = isLightMode ? '#4a8de8' : '#2f70c5'
 
     // Don't render until mounted to avoid hydration issues
     if (!mounted) {
@@ -42,7 +50,34 @@ export function AnimatedBackground() {
         )
     }
 
-    // Use PixelBlast for all devices with optimized settings
+    // Minimal mode: only background color
+    if (mode === 'minimal') {
+        return (
+            <div className="fixed inset-0 -z-10 bg-blue-50 dark:bg-black transition-colors duration-500" />
+        )
+    }
+
+    // Plasma mode (FloatingLines)
+    if (mode === 'plasma') {
+        return (
+            <div className="fixed inset-0 -z-10 bg-blue-50 dark:bg-black">
+                <FloatingLines
+                    enabledWaves={['top', 'middle', 'bottom']}
+                    lineCount={[4, 6, 8]}
+                    lineDistance={[12, 10, 8]}
+                    bendRadius={5.0}
+                    bendStrength={-0.2}
+                    interactive={true}
+                    parallax={true}
+                    animationSpeed={0.3}
+                    linesGradient={['#1a4d8f', '#2f70c5', '#3d7ec2', '#4a8de8']}
+                    mixBlendMode="normal"
+                />
+            </div>
+        )
+    }
+
+    // Default mode: PixelBlast
     return (
         <div className="fixed inset-0 -z-10 bg-blue-50 dark:bg-black">
             <PixelBlast

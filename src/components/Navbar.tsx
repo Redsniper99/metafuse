@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import { AnimationModeSwitcher } from './AnimationModeSwitcher'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -62,9 +63,12 @@ export function Navbar() {
                         {/* Logo */}
                         <Link
                             href="/"
-                            className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+                            className="flex items-center gap-2 hover:scale-105 transition-transform duration-300"
                         >
-                            metafuse
+                            <img src="/metafuse.svg" alt="Metafuse" className="w-8 h-8" />
+                            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
+                                metafuse
+                            </span>
                         </Link>
 
                         {/* Desktop Navigation Links */}
@@ -83,8 +87,9 @@ export function Navbar() {
                             ))}
                         </div>
 
-                        {/* Right side: Theme Switcher + Mobile Menu Button */}
+                        {/* Right side: Theme Switcher + Animation Mode Switcher + Mobile Menu Button */}
                         <div className="flex items-center gap-2">
+                            <AnimationModeSwitcher />
                             <ThemeSwitcher />
 
                             {/* Mobile Menu Button */}

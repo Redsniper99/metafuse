@@ -46,11 +46,11 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0.98 0.005 240);
   --foreground: oklch(0.13 0.028 261.692);
-  --card: oklch(1 0 0);
+  --card: oklch(0.98 0.005 240);
   --card-foreground: oklch(0.13 0.028 261.692);
-  --popover: oklch(1 0 0);
+  --popover: oklch(0.98 0.005 240);
   --popover-foreground: oklch(0.13 0.028 261.692);
   --primary: oklch(0.21 0.034 264.665);
   --primary-foreground: oklch(0.985 0.002 247.839);
@@ -128,6 +128,42 @@ body {
 .dark .glass {
   background: rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card glare effect */
+.card-glare {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glare::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(74, 141, 232, 0.15) 40%,
+    rgba(91, 163, 255, 0.2) 50%,
+    rgba(74, 141, 232, 0.15) 60%,
+    transparent 80%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-glare:hover::before {
+  transform: translateX(100%);
+}
+
+.card-glare > * {
+  position: relative;
+  z-index: 2;
 }
 
 @layer base {

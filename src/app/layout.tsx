@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
+import { AnimationModeProvider } from "@/contexts/AnimationModeContext";
 import Preloader from "@/components/Preloader";
 
 const geistSans = Geist({
@@ -16,24 +17,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "metafuse - innovative digital solutions",
-  description: "crafting innovative digital solutions that transform ideas into reality",
+  title: "metafuse - Digital Solutions",
+  description: "Crafting innovative digital solutions through cutting-edge technology and beautiful design",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <Preloader />
-          <Navbar />
-          {children}
+          <AnimationModeProvider>
+            <Preloader />
+            <Navbar />
+            {children}
+          </AnimationModeProvider>
         </ThemeProvider>
       </body>
     </html>

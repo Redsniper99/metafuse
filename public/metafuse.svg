@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="metafuseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2f70c5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4a8de8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5ba3ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <g transform="translate(100,100)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="url(#metafuseGradient)" stroke-width="3" opacity="0.3"/>
+    <!-- Inner circles -->
+    <circle cx="-25" cy="-25" r="15" fill="url(#metafuseGradient)" opacity="0.8"/>
+    <circle cx="25" cy="-25" r="15" fill="url(#metafuseGradient)" opacity="0.8"/>
+    <circle cx="0" cy="25" r="15" fill="url(#metafuseGradient)" opacity="0.8"/>
+    <!-- Center fusion point -->
+    <circle cx="0" cy="-8" r="20" fill="url(#metafuseGradient)"/>
+    <!-- Connecting lines -->
+    <path d="M -25,-25 L 0,-8 L 25,-25 M 0,-8 L 0,25" stroke="url(#metafuseGradient)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

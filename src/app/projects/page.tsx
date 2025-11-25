@@ -50,6 +50,9 @@ export default function ProjectsPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10" />
 
                 <div className="relative max-w-4xl mx-auto text-center z-10">
+                    <div className="flex justify-center mb-6">
+                        <img src="/metafuse.svg" alt="Metafuse" className="w-20 h-20 md:w-24 md:h-24" />
+                    </div>
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-[#2f70c5] to-[#4a8de8] bg-clip-text text-transparent">
                         Our Projects
                     </h1>
